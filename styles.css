@@ -1,0 +1,46 @@
+
+:root{
+  --bg:#111214; --panel:#1d1f22; --panel2:#25282c; --text:#f5f2e9;
+  --muted:#a9adb3; --line:#34383e; --accent:#e0b35a; --good:#58b98c; --bad:#d86a6a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,select{font:inherit}
+button{color:inherit}
+.app{max-width:620px;margin:0 auto;padding:18px 16px 36px}
+.topbar,.quizHead,.dialogHead{display:flex;align-items:center;justify-content:space-between}
+.eyebrow{font-size:11px;letter-spacing:.2em;color:var(--accent);margin:0 0 2px}
+h1{font-size:27px;margin:0;font-family:Georgia,serif;letter-spacing:.02em}
+h2,h3,p{margin-top:0}
+h3{margin:24px 2px 10px;font-size:14px;color:var(--muted)}
+.iconBtn,.textBtn{background:transparent;border:0;padding:10px;border-radius:12px;font-size:22px}
+.textBtn{font-size:15px;color:var(--muted)}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px}
+.hero{display:flex;gap:14px;align-items:center;padding:18px;margin-top:18px}
+.hero h2{font-size:19px;margin-bottom:5px}.hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.penguin{display:grid;place-items:center;flex:0 0 54px;height:54px;border-radius:50%;background:#0c0d0f;border:2px solid var(--accent);color:var(--accent);font:30px Georgia,serif}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);padding:14px 4px;margin-top:12px;text-align:center}
+.stats div+div{border-left:1px solid var(--line)}.stats strong{display:block;font-size:20px}.stats span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode{padding:15px;text-align:left;min-height:112px;cursor:pointer}
+.mode span{display:block;color:var(--accent);font:bold 12px Georgia,serif;letter-spacing:.08em;margin-bottom:12px}
+.mode b{display:block;font-size:15px}.mode small{display:block;color:var(--muted);margin-top:5px}
+.mode.accent{border-color:#745d31;box-shadow:inset 0 0 0 1px #745d31}
+.view{display:none}.view.active{display:block}
+.quizHead{margin-top:12px}.quizHead>div:nth-child(2){font-weight:700}.miniScore{font-size:13px;color:var(--muted)}
+.progress{height:4px;background:#25282c;border-radius:9px;overflow:hidden;margin:9px 0 18px}.progress div{height:100%;width:0;background:var(--accent);transition:.25s}
+.question{padding:22px 18px;text-align:center}.questionKicker,#questionKicker{font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:12px}
+.question h2{font-size:25px;margin:0}.scaleNote{font-size:13px;color:var(--accent);margin:8px 0 0}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.answer{min-height:72px;border:1px solid var(--line);background:var(--panel);border-radius:16px;font-size:19px;font-weight:700}
+.answer.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 18%,var(--panel))}
+.answer.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 18%,var(--panel))}
+.answer:disabled{opacity:.95}
+.feedback{padding:16px;margin-top:12px}.feedback h3{margin:0 0 6px;color:var(--text);font-size:17px}.feedback p{color:var(--muted);line-height:1.55;font-size:14px}
+.hidden{display:none}.primary,.danger{width:100%;border:0;border-radius:14px;padding:14px;font-weight:800;margin-top:10px}.primary{background:var(--accent);color:#17130d}.danger{background:#3a2325;color:#f0b5b5}
+dialog{width:min(92vw,520px);border:1px solid var(--line);border-radius:20px;background:#181a1d;color:var(--text);padding:0}
+dialog::backdrop{background:#0009}dialog form{padding:18px}.setting{display:block;margin:18px 0}.setting span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+select{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}
+.note{color:var(--muted);font-size:12px;line-height:1.55}
+@media(max-width:380px){.modeGrid{grid-template-columns:1fr}.answers{grid-template-columns:1fr 1fr}}

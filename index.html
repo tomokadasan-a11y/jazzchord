@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#171717" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Jazz Chords" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Jazz Chord Quiz</title>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">JAZZ EAR & HARMONY</p>
+        <h1>Chord Flash</h1>
+      </div>
+      <button id="settingsBtn" class="iconBtn" aria-label="設定">⚙︎</button>
+    </header>
+
+    <section id="homeView" class="view active">
+      <div class="hero card">
+        <div class="penguin">♪</div>
+        <div>
+          <h2>コード構成音を、反射で。</h2>
+          <p>4択をタップして、12キーを少しずつ体に入れよう。</p>
+        </div>
+      </div>
+
+      <div class="stats card">
+        <div><strong id="totalAnswered">0</strong><span>回答</span></div>
+        <div><strong id="accuracy">—</strong><span>正答率</span></div>
+        <div><strong id="weakCount">0</strong><span>苦手</span></div>
+      </div>
+
+      <h3>練習モード</h3>
+      <div class="modeGrid">
+        <button class="mode card" data-mode="third"><span>3rd</span><b>3度を当てる</b><small>Cm7 → E♭</small></button>
+        <button class="mode card" data-mode="fifth"><span>5th</span><b>5度を当てる</b><small>Bm7♭5 → F</small></button>
+        <button class="mode card" data-mode="seventh"><span>7th</span><b>7度を当てる</b><small>G7 → F</small></button>
+        <button class="mode card" data-mode="tones"><span>1·3·5·7</span><b>構成音を当てる</b><small>1音だけ欠けた4択</small></button>
+        <button class="mode card accent" data-mode="avoid"><span>AVOID</span><b>アボイドノート</b><small>コード＋スケールから判断</small></button>
+        <button class="mode card" data-mode="weak"><span>RETRY</span><b>苦手だけ</b><small>間違いが多い問題を復習</small></button>
+      </div>
+    </section>
+
+    <section id="quizView" class="view">
+      <div class="quizHead">
+        <button id="backBtn" class="textBtn">‹ 戻る</button>
+        <div id="modeLabel">3度</div>
+        <div class="miniScore"><span id="sessionCorrect">0</span>/<span id="sessionTotal">0</span></div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+
+      <section class="question card">
+        <p id="questionKicker">この音は？</p>
+        <h2 id="questionText">Cmaj7 の3度は？</h2>
+        <p id="scaleNote" class="scaleNote"></p>
+      </section>
+
+      <div id="answers" class="answers"></div>
+
+      <section id="feedback" class="feedback card hidden">
+        <h3 id="feedbackTitle"></h3>
+        <p id="feedbackText"></p>
+        <button id="nextBtn" class="primary">次の問題 →</button>
+      </section>
+    </section>
+
+    <dialog id="settingsDialog">
+      <form method="dialog">
+        <div class="dialogHead">
+          <h2>設定</h2>
+          <button value="cancel" class="iconBtn">×</button>
+        </div>
+        <label class="setting">
+          <span>出題キー</span>
+          <select id="keyRange">
+            <option value="all">12キー</option>
+            <option value="easy">♯♭が少ないキー中心</option>
+          </select>
+        </label>
+        <label class="setting">
+          <span>コードタイプ</span>
+          <select id="chordRange">
+            <option value="basic">maj7 / m7 / 7 / m7♭5</option>
+            <option value="diatonic">上記＋m7(Aeolian)</option>
+          </select>
+        </label>
+        <label class="setting">
+          <span>アボイド判定</span>
+          <select id="avoidRule">
+            <option value="practical">実用ベーシック</option>
+            <option value="strict">Nettles/Graf系</option>
+          </select>
+        </label>
+        <p class="note">「アボイド」は“絶対に弾いてはいけない音”ではなく、長く伸ばすとコード感を濁しやすい音として扱います。</p>
+        <button id="resetBtn" type="button" class="danger">学習記録をリセット</button>
+        <button value="default" class="primary">閉じる</button>
+      </form>
+    </dialog>
+  </main>
+<script src="app.js"></script>
+</body>
+</html>
